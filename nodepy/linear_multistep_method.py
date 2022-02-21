@@ -162,6 +162,7 @@ class LinearMultistepMethod(GeneralLinearMethod):
         """ Return True if the linear multistep method satisfies
             the conditions of order p (only) """
         ii=snp.arange(len(self.alpha))
+        print('order error', abs(sum(ii**p*self.alpha-p*self.beta*ii**(p-1))))
         return abs(sum(ii**p*self.alpha-p*self.beta*ii**(p-1)))<tol
 
     def absolute_monotonicity_radius(self):
@@ -573,6 +574,7 @@ def Adams_Bashforth(k):
             betaj[k-i-1]=(-one)**i*combinatorial.factorials.binomial(j,i)*gamma[j]
         beta=beta+betaj
     name=str(k)+'-step Adams-Bashforth'
+    print('beta', beta)
     return LinearMultistepMethod(alpha,beta,name=name,shortname='AB'+str(k))
 
 def Nystrom(k):

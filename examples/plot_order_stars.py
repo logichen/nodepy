@@ -2,6 +2,7 @@ from nodepy.stability_function import pade_exp
 from nodepy.stability_function import plot_order_star
 import matplotlib.pyplot as pl
 import numpy as np
+pl.switch_backend('agg')
 
 P=list(range(5))
 Q=list(range(5))
@@ -14,3 +15,4 @@ for ip in range(4):
     pl.plot(Q[ip].r.real,Q[ip].r.imag,'ok')
     pl.title('k='+str(k[ip])+',j='+str(j[ip]))
     pl.show()
+    pl.savefig("./OverThreeOrders/nodepy/examples/test.pdf")
